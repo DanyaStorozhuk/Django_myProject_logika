@@ -1,0 +1,20 @@
+{% extends "layout_room_info.html"%}
+{% load static %}
+{% block content %}
+
+    <div class="accordion" id="accordionExample"></div>
+        {% for booking in bookings%}
+            <div class="accordion-item"></div>
+                <h2 class="accordion-header"  id="heading{{ forloop.counter }}"></h2>
+                    <p class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}"></button>
+                        <div class="w-100 text-center  fs-1">Booking #{{ booking.id }}
+                            <h2>User: {{booking.user.username}}</h2>
+                            <h2>Room: {{booking.room}}</h2>
+                            <h2>Time range: {{booking.start_time}} - {{booking.end_time}}</h2>
+                        </div>
+                    </p>
+                </h2>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock%}

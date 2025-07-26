@@ -1,0 +1,32 @@
+{% extends "layout_room_info.html"%}
+{% load static %}
+{% block content %}
+
+<h1> Заповніть буль ласка заповніть цю інформацію </h1>
+<div class="container mt-5">
+    <div  class="w-50 mx-auto" style="min-width: 300px;">
+        <form method="POST" action="{% url 'booking'%}" class = "form-group">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="room-namber" class="form-label">Room number</label>
+                <input type = "text" id = "room-namber" name = "room-namber" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="start-time" class="form-label">start-time</label>
+                <input type = "datetime-local" id = "start-time" name = "start-time" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="end-time" class="form-label">end-time</label>
+                <input type = "datetime-local" id = "end-time" name = "end-time" class="form-control">
+            </div>
+
+            <button type = "submit" class="btn btn-primary">Book this room</button>
+        </form>
+    </div>    
+</div>
+
+    
+{% endblock %}
