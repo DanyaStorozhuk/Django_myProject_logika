@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from .forms import BookingForm
+from .forms import BookingForm, ReviewsForm
 from .models import Room
 from django.http import HttpResponse
-from booking.models import Booking, Room
+from booking.models import Booking, Room, Reviews
 # Create your views here.
 
 def room_list(request):
@@ -54,10 +54,11 @@ def book_room(request):
             )
         booking = Booking.objects.create(
             user = request.user,
+            room = room,
             start_time=start_time,
             end_time=end_time
-            )
-        return redirect("booking-details", pk=booking.id)
+            ).save()
+        return redirect("booking-details")
     else:
         return render(request, template_name="new_booking_form2.html")
     
@@ -76,3 +77,16 @@ def booking_details(request):
             "This booking doens't exist",
             status=404
         )
+
+def reviews_list(request):
+    reviews = Reviews.objects.order_by('-created_at')  # Новіші зверху
+
+    if request.method == 'POST':
+        form = ReviewsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('reviews_list')
+    else:
+        form = ReviewsForm()
+
+    return render(request, 'reviews_list.html', {'reviews': reviews, 'form': form})

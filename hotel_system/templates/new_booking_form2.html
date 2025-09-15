@@ -5,12 +5,12 @@
 <h1> Заповніть буль ласка заповніть цю інформацію </h1>
 <div class="container mt-5">
     <div  class="w-50 mx-auto" style="min-width: 300px;">
-        <form method="POST" action="{% url 'booking'%}" class = "form-group">
+        <form method="POST" action="{% url 'book-room'%}" class = "form-group">
             {% csrf_token %}
             
             <div class="mb-3">
                 <label for="room-namber" class="form-label">Room number</label>
-                <input type = "text" id = "room-namber" name = "room-namber" class="form-control">
+                <input type = "number" id = "room-namber" name = "room-number" class="form-control">
             </div>
 
             <div class="mb-3">
@@ -24,6 +24,7 @@
             </div>
 
             <button type = "submit" class="btn btn-primary">Book this room</button>
+            <a href="{% url 'booking' %}" class="btn btn-primary">Перейти назад</a>
         </form>
     </div>    
 </div>

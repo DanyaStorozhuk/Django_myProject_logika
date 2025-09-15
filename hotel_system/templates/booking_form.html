@@ -7,20 +7,28 @@
         {% if request.user.is_authenticated %}
         {% else %}
         {% endif %}
+
         <div class="w-50 mx-auto" style="min-width: 300px;">
+
+            <div>
+                <a class="btn btn-primary mt-5 d-block text-center w-50 mx-auto" href="{% url 'admin:index' %}"> Перейти в адмінку </a>
+            </div>
 
             <div>
                 <a class="btn btn-primary mt-5 d-block text-center mx-auto" href=" {% url 'rooms' %}"> Тут знаходиться список кімнат </a>
             </div>
 
             <div>
-                <a class="btn btn-primary mt-5 d-block text-center mx-auto" href=" {% url 'book-room' %}"> Інформація про кімнату </a>
+                <a class="btn btn-primary mt-5 d-block text-center mx-auto" href=" {% url 'book-room' %}"> Забронювати кімнату </a>
             </div>
 
             </div>
-                <a class="btn btn-primary mt-5 d-block text-center w-50 mx-auto" href=" {% url 'booking-details' %}">Деталі про User</a>
+                <a class="btn btn-primary mt-5 d-block text-center w-50 mx-auto" href=" {% url 'booking-details' %}"> Деталі про User </a>
             </div>
-
+            
+            </div>
+                <a class="btn btn-primary mt-5 d-block text-center w-50 mx-auto" href=" {% url 'reviews_list' %}"> Відгуки </a>
+            </div>
         </div>
 
 {% endblock %}
